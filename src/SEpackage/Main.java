@@ -562,8 +562,7 @@ public class Main extends JFrame {
 		});
 		
 		
-		// goes to actual game
-		// make a new thread that starts game and closes the loading screen when game has Finished loading??
+		// goes to actual game (should close we the window now?)
 		GameEngine.main(null);
 		
 	}
