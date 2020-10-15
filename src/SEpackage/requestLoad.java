@@ -1,6 +1,6 @@
 package SEpackage;
 
-import java.io.FileWriter;
+import java.io.FileReader;
 
 public class requestLoad {
 
@@ -14,8 +14,7 @@ public class requestLoad {
 			
 			
 			// get data from file
-			String path = ".\\user_data\\saves\\" + user + ".data";
-			FileWriter file = new FileWriter(path);
+			
 			
 			return data;
 			

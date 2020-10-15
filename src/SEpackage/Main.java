@@ -457,6 +457,8 @@ public class Main extends JFrame {
 									
 									incorrectLabel.setVisible(false);
 									
+									log("User '" + user + "' logged in");
+									
 									Game();
 									break;
 									

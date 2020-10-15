@@ -16,7 +16,7 @@ public class GameEngine {
 	// main method
 	public static void main(String[] args) {
 		
-		log("Heating up game engine... (◉⩊◉) ");
+		log("Heating up game engine... (OwO) ");
 		
 		// load in game
 		LOAD_GAME.start();
