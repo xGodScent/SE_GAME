@@ -6,7 +6,15 @@ import java.awt.Graphics;
 import java.io.IOException;
 
 
-
+//!~
+//////////////////////////////----------------------|
+/*///												|
+* 													|
+* @Author: Rio Bérénos								|
+*													|
+*///												|
+//////////////////////////////----------------------|
+//!~
 
 
 // GameEngine class
@@ -27,17 +35,16 @@ public class GameEngine {
 		
 		
 		
-		// remove this later
-		log("Im Out! \\(°Ω°)/ ");
-		System.exit(0); 
+		
 		
 	}
 	
 	// LOG (to console) method
 	public static void log(String toConsole) {
 		
-		System.out.println("[CONSOLE:~$] : " + toConsole + ";");
-
+		String c = "[CONSOLE:~$] : " + toConsole + ";";
+		System.out.println(c.toUpperCase());
+		
 	}
 	
 	
@@ -50,6 +57,7 @@ public class GameEngine {
 	public static int time = 0;		// t
 	public static int xpos;			// x
 	public static int ypos;			// y
+	// ^ hot as shit global data
 	
 	// 0 = hasnt started
 	// 1 = in progress
@@ -128,5 +136,13 @@ public class GameEngine {
 		
 	};
 	
+	
+	public void handleClose() {
+		
+		log("Im Out! \\(°Ω°)/ ");
+		SAVE_GAME.start();
+		System.exit(0);
+		
+	}
 	
 } // GameEngine class

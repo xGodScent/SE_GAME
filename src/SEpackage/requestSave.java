@@ -3,6 +3,18 @@ package SEpackage;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+//!~
+//////////////////////////////----------------------|
+/*///												|
+* 													|
+* @Author: Rio Bérénos								|
+*													|
+*///												|
+//////////////////////////////----------------------|
+//!~
+
+
 public class requestSave {
 
 	public static void toFile(int[] data, String user, int slot) throws IOException {

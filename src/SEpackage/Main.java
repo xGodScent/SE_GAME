@@ -97,7 +97,8 @@ public class Main extends JFrame {
 	// LOG (to console) method
 	public void log(String toConsole) {
 		
-		System.out.println("[CONSOLE:~$] : " + toConsole + ";");
+		String c = "[CONSOLE:~$] : " + toConsole + ";";
+		System.out.println(c.toUpperCase());
 		
 	}
 	

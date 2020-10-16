@@ -2,6 +2,18 @@ package SEpackage;
 
 import java.io.FileReader;
 
+
+//!~
+//////////////////////////////----------------------|
+/*///												|
+* 													|
+* @Author: Rio Bérénos								|
+*													|
+*///												|
+//////////////////////////////----------------------|
+//!~
+
+
 public class requestLoad {
 
 	public static int[] getFromFile(String user, int slot) {
