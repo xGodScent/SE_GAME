@@ -108,8 +108,8 @@ public class Main extends JFrame {
 	public Main() {
 
 		
-		//LoginScreen();
-		RegisterScreen();
+		LoginScreen();
+		
 		
 	} // public Main()
 	
