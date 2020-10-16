@@ -1,4 +1,4 @@
 u:default
 p:
-dob:1/1/2000
+dob:[1, 1, 2000]
 e:example@domain.net
