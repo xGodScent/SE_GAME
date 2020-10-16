@@ -44,11 +44,12 @@ public class GameEngine {
 	// -------------------------------------------------------------------------------------------------------------------------!
 	
 	// [VARIABLES]
-	public static int lives = 3;
-	public static int kills = 0;
-	public static int time = 0;
-	public static int xpos;
-	public static int ypos;
+	// (this is the order as well when we want to get an int[] array {l, k, t, x, y}; )
+	public static int lives = 3;	// l
+	public static int kills = 0;	// k
+	public static int time = 0;		// t
+	public static int xpos;			// x
+	public static int ypos;			// y
 	
 	// 0 = hasnt started
 	// 1 = in progress

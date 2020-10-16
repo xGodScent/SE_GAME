@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 import java.net.URI;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -83,11 +84,14 @@ public class Main extends JFrame {
 	}
 
 	// [GLOBAL DATA]
-	public static String user = "default";
-	public String new_user;
-	public static int slot = -1;
+	public static String user = "default";	// sets user to default user
+	public String new_user;					// new_user will be declared when we make a new account
+	public static int slot = -1;			// game slot (which save file we want to use)
 	
-	public String temp;
+	public int[] dob;						// date of birth in an array: {day, month, year}
+	public String e;						// email
+	
+	public String temp;						// temp (ignore)
 	
 	
 	// LOG (to console) method
@@ -104,12 +108,13 @@ public class Main extends JFrame {
 	public Main() {
 
 		
-		LoginScreen();
-		
+		//LoginScreen();
+		RegisterScreen();
 		
 	} // public Main()
 	
 	///////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	// register
 	public void RegisterScreen() {
@@ -319,12 +324,54 @@ public class Main extends JFrame {
 		        } // for loop
 				
 		        
+		        // if account doesnt exist, we try to create one
 		        if (!found) {
 		        
 					// checks if passwords match
 					if (p1.equals(p2)) {
 						
+						// exchange passwords
 						temp = p1;
+						p1 = "";
+						p2 = p1;
+
+						// get email
+						String Temp = emailField.getText();
+						
+						// if the email field is not empty
+						if (!Temp.equals(null)) {
+							
+							if (Temp.endsWith("@hotmail.com") || Temp.endsWith("@gmail.com")) {
+								
+								e = Temp;
+								
+							} else {
+								
+								// lets user know that email might not be working
+								int option = JOptionPane.showConfirmDialog(null, "This email might not be valid, are you sure you want to continue?", "Email validation", JOptionPane.INFORMATION_MESSAGE);
+								
+								// if the option is not yes/confirm
+								if (option != 0) {
+									
+									emailField.setText("");
+									JOptionPane.showMessageDialog(null, "Please fill in a valid email or continue to sign up without one");
+									
+								} else {
+									e = Temp;
+								}
+								
+							} // else statement
+							
+						} // if email is not null
+						
+						
+						// get dob (date of birth)
+						int[] tEmp = {dayOpt.getSelectedIndex() + 1, monthOpt.getSelectedIndex() + 1, (int) yearSp.getValue()};
+						dob = tEmp;
+						
+						
+						// create new userrrr
+						// create new user using threading
 						CREATE_NEW_USER.start();
 						JOptionPane.showMessageDialog(null, "You will have to login with your account in the login screen");
 						LoginScreen();
@@ -353,6 +400,8 @@ public class Main extends JFrame {
 		
 	} // RegisterScreen()
 	
+	
+	// login menu/screen
 	public void LoginScreen() {
 		// window setup
 		getContentPane().removeAll();
@@ -586,24 +635,35 @@ public class Main extends JFrame {
 				String p = temp;
 				FileWriter temp;
 				
+				// create account file
 				File accData = new File(".\\user_data\\login_cookies\\" + new_user + ".account");
 				accData.createNewFile();
 				
 				temp = new FileWriter(accData);
-				temp.write("u:" + new_user + "\np:" + p + "\ndob:\ne:");
+				temp.write("u:" + new_user + "\np:" + p + "\ndob:" + Arrays.toString(dob) + "\ne:" + e);
 				p = "";
 				temp.close();
 				
+				// create slot data files
 				for (int i = 1; i < 4; i++) {
 					
 					File dataSet = new File(".\\user_data\\saves\\" + new_user + "\\" + i + ".data");
 					dataSet.createNewFile();
 					
 					temp = new FileWriter(dataSet);
-					temp.write("null-pointer");
+					temp.write("l:3\nk:0\nt:0\nx:360\ny:360");
 					temp.close();
 					
 				}
+				
+				// create settings file
+				File createSettings = new File(".\\user_data\\saves\\" + new_user + "\\game.settings");
+				createSettings.createNewFile();
+				
+				temp = new FileWriter(createSettings);
+				temp.write("fpsL:60\nresX:720\nresY:720\nmusic:on\nsound:on");
+				temp.close();
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
